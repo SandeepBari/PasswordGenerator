@@ -1,3 +1,6 @@
+from datetime import datetime
+import os 
+from os import path
 import random
 import string
 
@@ -56,4 +59,15 @@ if checkFlag == 0:
 			passTemp2 = random.choice(passTemp1)
 			password = password + passTemp2
 
-		print(password)			
+		print(password)
+		passTemp1= password;
+
+if path.exists("Password.txt"):
+	os.remove("Password.txt")
+
+datetimeVal = str(datetime.now())
+f = open("Password.txt", "a")
+f.write("Your Password is: ")
+f.write(passTemp1)
+f.write("\n"+ datetimeVal)
+f.close()		
