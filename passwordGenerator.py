@@ -8,7 +8,7 @@ print('1. Manual')
 print('2. Automatic')
 entry = input();
 
-passTemp1= " "
+passTemp1= ""
 checkFlag= 0;
 
 if entry == '1':
@@ -23,7 +23,13 @@ if entry == '1':
 		for i in range(int(numVal)):
 			num= str(random.randint(int(lowRangeNum), int(highRangeNum)))
 			alpha= str(random.choice(StringTemp))
-			passTemp1 = passTemp1+ alpha+ num 
+
+			seq= random.randint(0,9)
+			if seq % 2 == 0:
+				passTemp1 = passTemp1+ alpha+ num
+
+			else:
+				passTemp1 = passTemp1+ num+ alpha
 
 		passTemp= passTemp1[1:int(numVal)+1]
 		print('Your Password: '+ passTemp)
@@ -40,8 +46,13 @@ elif (entry == '2'):
 		num= str(random.randint(0,9))
 		alphaUpper= str(random.choice(string.ascii_uppercase))
 		alphaLower= str(random.choice(string.ascii_lowercase))
-		passTemp1 = passTemp1+ alphaUpper+ alphaLower+ num
-  
+		
+		seq= random.randint(0,9)
+		if seq % 2 == 0:
+			passTemp1 = passTemp1+ alphaLower+ num+ alphaUpper
+		else:
+			passTemp1 = passTemp1+ num+ alphaUpper+ alphaLower
+ 
 	passTemp= passTemp1[1:int(numVal)+1]
 	print('Your Password: '+ passTemp)
 	checkFlag= 0
